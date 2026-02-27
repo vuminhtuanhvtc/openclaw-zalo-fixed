@@ -1,0 +1,9 @@
+{
+  "id": "zalo_fixed",
+  "channels": ["zalo_fixed"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

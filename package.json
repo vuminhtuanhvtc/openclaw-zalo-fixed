@@ -1,0 +1,32 @@
+{
+  "name": "openclaw-zalo-fixed",
+  "version": "0.1.0",
+  "description": "Community-maintained patched Zalo channel plugin for OpenClaw",
+  "type": "module",
+  "dependencies": {
+    "undici": "7.22.0"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "channel": {
+      "id": "zalo_fixed",
+      "label": "Zalo Fixed",
+      "selectionLabel": "Zalo Fixed (Bot API)",
+      "docsPath": "/channels/zalo",
+      "docsLabel": "zalo-fixed",
+      "blurb": "Community-maintained patched Zalo Bot API channel for OpenClaw.",
+      "aliases": [
+        "zl"
+      ],
+      "order": 80,
+      "quickstartAllowFrom": true
+    },
+    "install": {
+      "npmSpec": "openclaw-zalo-fixed",
+      "localPath": "extensions/zalo-fixed",
+      "defaultChoice": "npm"
+    }
+  }
+}
