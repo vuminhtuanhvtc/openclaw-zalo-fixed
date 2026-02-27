@@ -28,5 +28,17 @@
       "localPath": "extensions/zalo-fixed",
       "defaultChoice": "npm"
     }
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuminhtuanhvtc/openclaw-zalo-fixed.git"
+  },
+  "homepage": "https://github.com/vuminhtuanhvtc/openclaw-zalo-fixed#readme",
+  "bugs": {
+    "url": "https://github.com/vuminhtuanhvtc/openclaw-zalo-fixed/issues"
+  },
+  "license": "MIT"
 }
