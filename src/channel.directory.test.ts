@@ -14,7 +14,7 @@ describe("zalo directory", () => {
   it("lists peers from allowFrom", async () => {
     const cfg = {
       channels: {
-        zalo: {
+        zalo_fixed: {
           allowFrom: ["zalo:123", "zl:234", "345"],
         },
       },

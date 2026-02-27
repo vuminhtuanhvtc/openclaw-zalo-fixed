@@ -13,7 +13,7 @@ import {
 } from "openclaw/plugin-sdk";
 import { listZaloAccountIds, resolveDefaultZaloAccountId, resolveZaloAccount } from "./accounts.js";
 
-const channel = "zalo" as const;
+const channel = "zalo_fixed" as const;
 
 type UpdateMode = "polling" | "webhook";
 
@@ -27,7 +27,7 @@ function setZaloDmPolicy(
     ...cfg,
     channels: {
       ...cfg.channels,
-      zalo: {
+      zalo_fixed: {
         ...cfg.channels?.zalo_fixed,
         dmPolicy,
         ...(allowFrom ? { allowFrom } : {}),
@@ -57,7 +57,7 @@ function setZaloUpdateMode(
         ...cfg,
         channels: {
           ...cfg.channels,
-          zalo: rest,
+          zalo_fixed: rest,
         },
       } as OpenClawConfig;
     }
@@ -69,7 +69,7 @@ function setZaloUpdateMode(
       ...cfg,
       channels: {
         ...cfg.channels,
-        zalo: {
+        zalo_fixed: {
           ...cfg.channels?.zalo_fixed,
           accounts,
         },
@@ -82,7 +82,7 @@ function setZaloUpdateMode(
       ...cfg,
       channels: {
         ...cfg.channels,
-        zalo: {
+        zalo_fixed: {
           ...cfg.channels?.zalo_fixed,
           webhookUrl,
           webhookSecret,
@@ -92,7 +92,7 @@ function setZaloUpdateMode(
     } as OpenClawConfig;
   }
 
-  const accounts = { ...cfg.channels?.zalo_fixed?.accounts } as Record<string, Record<string, unknown>>;
+    const accounts = { ...cfg.channels?.zalo_fixed?.accounts } as Record<string, Record<string, unknown>>;
   accounts[accountId] = {
     ...accounts[accountId],
     webhookUrl,
@@ -103,7 +103,7 @@ function setZaloUpdateMode(
     ...cfg,
     channels: {
       ...cfg.channels,
-      zalo: {
+      zalo_fixed: {
         ...cfg.channels?.zalo_fixed,
         accounts,
       },
@@ -155,7 +155,7 @@ async function promptZaloAllowFrom(params: {
       ...cfg,
       channels: {
         ...cfg.channels,
-        zalo: {
+        zalo_fixed: {
           ...cfg.channels?.zalo_fixed,
           enabled: true,
           dmPolicy: "allowlist",
@@ -169,7 +169,7 @@ async function promptZaloAllowFrom(params: {
     ...cfg,
     channels: {
       ...cfg.channels,
-      zalo: {
+      zalo_fixed: {
         ...cfg.channels?.zalo_fixed,
         enabled: true,
         accounts: {
@@ -228,7 +228,7 @@ export const zaloOnboardingAdapter: ChannelOnboardingAdapter = {
     shouldPromptAccountIds,
     forceAllowFrom,
   }) => {
-    const zaloOverride = accountOverrides.zalo?.trim();
+    const zaloOverride = accountOverrides.zalo_fixed?.trim();
     const defaultZaloAccountId = resolveDefaultZaloAccountId(cfg);
     let zaloAccountId = zaloOverride ? normalizeAccountId(zaloOverride) : defaultZaloAccountId;
     if (shouldPromptAccountIds && !zaloOverride) {
@@ -265,7 +265,7 @@ export const zaloOnboardingAdapter: ChannelOnboardingAdapter = {
           ...next,
           channels: {
             ...next.channels,
-            zalo: {
+            zalo_fixed: {
               ...next.channels?.zalo_fixed,
               enabled: true,
             },
@@ -307,7 +307,7 @@ export const zaloOnboardingAdapter: ChannelOnboardingAdapter = {
           ...next,
           channels: {
             ...next.channels,
-            zalo: {
+            zalo_fixed: {
               ...next.channels?.zalo_fixed,
               enabled: true,
               botToken: token,
@@ -319,7 +319,7 @@ export const zaloOnboardingAdapter: ChannelOnboardingAdapter = {
           ...next,
           channels: {
             ...next.channels,
-            zalo: {
+            zalo_fixed: {
               ...next.channels?.zalo_fixed,
               enabled: true,
               accounts: {

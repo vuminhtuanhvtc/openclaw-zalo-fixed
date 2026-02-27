@@ -142,6 +142,8 @@ function startPollingLoop(params: {
     } catch (err) {
       if (err instanceof ZaloApiError && err.isPollingTimeout) {
         // no updates
+      } else if (err instanceof Error && err.name === "AbortError") {
+        // polling timeout abort (no updates)
       } else if (!isStopped() && !abortSignal.aborted) {
         console.error(`[${account.accountId}] Zalo polling error:`, err);
         await new Promise((resolve) => setTimeout(resolve, 5000));
@@ -324,7 +326,7 @@ async function processMessageWithPipeline(params: {
   const defaultGroupPolicy = resolveDefaultGroupPolicy(config);
   const groupAccess = isGroup
     ? evaluateZaloGroupAccess({
-        providerConfigPresent: config.channels?.zalo !== undefined,
+        providerConfigPresent: config.channels?.zalo_fixed !== undefined,
         configuredGroupPolicy: account.config.groupPolicy,
         defaultGroupPolicy,
         groupAllowFrom,
@@ -465,7 +467,7 @@ async function processMessageWithPipeline(params: {
     BodyForAgent: rawBody,
     RawBody: rawBody,
     CommandBody: rawBody,
-    From: isGroup ? `zalo_fixed:group:${chatId}` : `zalo:${senderId}`,
+    From: isGroup ? `zalo_fixed:group:${chatId}` : `zalo_fixed:${senderId}`,
     To: `zalo_fixed:${chatId}`,
     SessionKey: route.sessionKey,
     AccountId: route.accountId,

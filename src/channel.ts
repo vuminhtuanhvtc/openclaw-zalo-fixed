@@ -248,7 +248,7 @@ export const zaloPlugin: ChannelPlugin<ResolvedZaloAccount> = {
           ...next,
           channels: {
             ...next.channels,
-            zalo: {
+            zalo_fixed: {
               ...next.channels?.zalo_fixed,
               enabled: true,
               ...(input.useEnv
@@ -266,7 +266,7 @@ export const zaloPlugin: ChannelPlugin<ResolvedZaloAccount> = {
         ...next,
         channels: {
           ...next.channels,
-          zalo: {
+          zalo_fixed: {
             ...next.channels?.zalo_fixed,
             enabled: true,
             accounts: {

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2
+
+### Fixes
+
+- Treat AbortError from polling timeout as normal (no restart loop).
+- Align config/runtime keys to `channels.zalo_fixed` (onboarding, applyAccountConfig, group policy, envelope From field).
+
+
 ## 0.1.1
 
 ### Fixes
