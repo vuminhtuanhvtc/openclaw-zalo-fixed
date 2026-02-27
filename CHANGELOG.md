@@ -1,35 +1,19 @@
 # Changelog
 
-## 2026.2.26
+## 0.1.1
 
-### Changes
+### Fixes
 
-- Version alignment with core OpenClaw release numbers.
-
-## 2026.2.25
-
-### Changes
-
-- Version alignment with core OpenClaw release numbers.
-
-## 2026.2.24
-
-### Changes
-
-- Version alignment with core OpenClaw release numbers.
-
-## 2026.2.22
-
-### Changes
-
-- Version alignment with core OpenClaw release numbers.
+- Fixed inbound image parsing for Zalo webhook events:
+  - `message.image.received` now reads image URL from `photo_url` (correct field) instead of `photo`.
+  - Restored image download pipeline in `handleImageMessage` so photo attachments are no longer skipped.
 
 ## 0.1.0
 
 ### Features
 
-- Zalo Bot API channel plugin with token-based auth (env/config/file).
-- Direct message support (DMs only) with pairing/allowlist/open/disabled policies.
-- Polling and webhook delivery modes.
+- Initial community fork of the Zalo Bot API plugin for OpenClaw.
+- Independent channel id: `zalo_fixed` (safe to run alongside official `zalo`).
+- Token-based auth (env/config/file), DM policies, polling + webhook modes.
 - Text + image messaging with 2000-char chunking and media size caps.
 - Multi-account support with per-account config.

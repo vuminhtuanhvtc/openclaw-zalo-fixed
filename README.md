@@ -2,6 +2,12 @@
 
 Community-maintained patched Zalo channel plugin for OpenClaw.
 
+## Latest fix (v0.1.1)
+
+- ✅ Fixed bug where inbound photo messages from Zalo webhook were ignored.
+- Root cause: Zalo sends image URL in `photo_url`, while old code parsed `photo`.
+- This fork now correctly parses `photo_url` in `message.image.received`.
+
 ## Why this exists
 
 This plugin is a community-maintained fork of the official Zalo channel plugin, so users can apply fixes quickly without waiting for upstream merge/release.
