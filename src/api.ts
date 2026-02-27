@@ -33,7 +33,7 @@ export type ZaloMessage = {
   };
   date: number;
   text?: string;
-  photo?: string;
+  photo_url?: string;
   caption?: string;
   sticker?: string;
 };
